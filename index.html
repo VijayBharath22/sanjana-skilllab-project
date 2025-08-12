@@ -1,0 +1,176 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Wanderlust Adventures - Explore the World</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+    <!--  
+    PROJECT PLAN: 
+    Features: Responsive layout, navigation with active state, dynamic destination cards,  
+             search bar with geolocation, interactive form with validation/storage,  
+             light/dark mode, social media community section 
+    Layout: Header with nav and search, main sections (hero, destinations, contact, community), 
+footer 
+    Pages/Components: Single-page app with sections for features, destinations, contact form, 
+and community 
+    --> 
+     
+    <header class="header"> 
+        <div class="container"> 
+            <div class="logo"> 
+                <h1>Wanderlust Adventures</h1> 
+            </div> 
+             
+            <nav class="nav"> 
+                <ul class="nav-list"> 
+                    <li><a href="#home" class="nav-link active">Home</a></li> 
+                    <li><a href="#destinations" class="nav-link">Destinations</a></li> 
+                    <li><a href="#contact" class="nav-link">Contact</a></li> 
+                    <li><a href="#about" class="nav-link">About</a></li> 
+                </ul> 
+            </nav> 
+             
+            <div class="header-controls"> 
+                <div class="search-container"> 
+                    <input type="text" id="searchInput" placeholder="Search destinations..." 
+class="search-input"> 
+                    <button id="findNearbyBtn" class="btn btn-primary">Find Nearby</button> 
+                </div> 
+                <button id="themeToggle" class="btn btn-secondary">  </button> 
+            </div> 
+        </div> 
+    </header> 
+ 
+    <main class="main"> 
+        <!-- Hero Section --> 
+        <section id="home" class="hero"> 
+            <div class="container"> 
+                <div class="hero-content"> 
+                    <h2>Discover Your Next Adventure</h2> 
+                    <p>Explore breathtaking destinations around the world and create unforgettable 
+memories</p> 
+                    <a href="#destinations" class="btn btn-primary">Explore Destinations</a> 
+                </div> 
+            </div> 
+        </section> 
+ 
+        <!-- Destinations Section --> 
+        <section id="destinations" class="destinations"> 
+            <div class="container"> 
+                <h2 class="section-title">Popular Destinations</h2> 
+                <div id="destinationsGrid" class="destinations-grid"> 
+                    <!-- Destination cards will be dynamically generated here --> 
+                </div> 
+                 
+                <!-- Nearby Destinations Subsection --> 
+                <div id="nearbySection" class="nearby-section" style="display: none;"> 
+                    <h3 class="subsection-title">Nearby You</h3> 
+                    <div id="nearbyGrid" class="nearby-grid"> 
+                        <!-- Nearby destination cards will be populated here --> 
+                    </div> 
+                </div> 
+            </div> 
+        </section> 
+ 
+        <!-- Contact Section --> 
+        <section id="contact" class="contact"> 
+            <div class="container"> 
+                <h2 class="section-title">Contact Us</h2> 
+                <form id="contactForm" class="contact-form"> 
+                    <div class="form-group"> 
+                        <label for="name">Name *</label> 
+                        <input type="text" id="name" name="name" required> 
+                        <span class="error-message" id="nameError"></span> 
+                    </div> 
+                     
+                    <div class="form-group"> 
+                        <label for="email">Email *</label> 
+                        <input type="email" id="email" name="email" required> 
+                        <span class="error-message" id="emailError"></span> 
+                    </div> 
+                     
+                    <div class="form-group"> 
+                        <label for="destination">Destination Interest</label> 
+                        <select id="destination" name="destination"> 
+                            <option value="">Select a destination</option> 
+                            <option value="paris">Paris, France</option> 
+                            <option value="tokyo">Tokyo, Japan</option> 
+                            <option value="new-york">New York, USA</option> 
+                            <option value="santorini">Santorini, Greece</option> 
+                            <option value="bali">Bali, Indonesia</option> 
+                        </select> 
+                    </div> 
+                     
+                    <div class="form-group"> 
+                        <label for="message">Message *</label> 
+                        <textarea id="message" name="message" rows="5" required></textarea> 
+                        <span class="error-message" id="messageError"></span> 
+                    </div> 
+                     
+                    <button type="submit" class="btn btn-primary">Send Message</button> 
+                </form> 
+                 
+                <div id="successMessage" class="success-message" style="display: none;"> 
+                    Thank you for your message! We'll get back to you soon. 
+                </div> 
+            </div> 
+        </section> 
+ 
+        <!-- Community Section --> 
+        <section id="community" class="community"> 
+            <div class="container"> 
+                <h2 class="section-title">Travel Community</h2> 
+                <p class="section-subtitle">Share your travel experiences and connect with fellow 
+adventurers</p> 
+                 
+                <!-- Post Form --> 
+                <form id="postForm" class="post-form"> 
+                    <div class="form-group"> 
+                        <label for="postName">Your Name *</label> 
+                        <input type="text" id="postName" name="postName" required> 
+                    </div> 
+                     
+                    <div class="form-group"> 
+                        <label for="postMessage">Share Your Experience *</label> 
+                        <textarea id="postMessage" name="postMessage" rows="4" required></textarea> 
+                    </div> 
+                     
+                    <div class="form-group"> 
+                        <label for="postImage">Image URL (optional)</label> 
+                        <input type="url" id="postImage" name="postImage" 
+placeholder="https://example.com/image.jpg"> 
+                    </div> 
+                     
+                    <button type="submit" class="btn btn-primary">Share Experience</button> 
+                </form> 
+                 
+                <!-- Community Feed --> 
+                <div id="communityFeed" class="community-feed"> 
+                    <!-- Posts will be dynamically generated here --> 
+                </div> 
+            </div> 
+        </section> 
+ 
+        <!-- About Section --> 
+        <section id="about" class="about"> 
+            <div class="container"> 
+                <h2 class="section-title">About Wanderlust Adventures</h2> 
+                <p>We're passionate about helping travelers discover amazing destinations around the 
+world. Our platform connects adventure seekers with unforgettable experiences and a 
+community of like-minded explorers.</p> 
+            </div> 
+        </section> 
+    </main> 
+ 
+    <footer class="footer"> 
+        <div class="container"> 
+            <p>&copy; 2024 Wanderlust Adventures. All rights reserved.</p> 
+        </div> 
+    </footer> 
+ 
+    <script src="script.js"></script> 
+</body> 
+</html> 
